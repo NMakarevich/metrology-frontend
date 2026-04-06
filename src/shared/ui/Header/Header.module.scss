@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 20px;
+  background-color: #303f9f;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
