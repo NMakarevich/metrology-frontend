@@ -15,7 +15,7 @@ export const useBurger = () => {
         toggleBurger();
       }
     },
-    [isOpen, setIsOpen],
+    [isOpen, toggleBurger],
   );
 
   useEffect(() => {
