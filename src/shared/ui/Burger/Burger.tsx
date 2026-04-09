@@ -7,7 +7,7 @@ import styles from './Burger.module.scss';
 export const Burger = ({ isOpen, toggleBurger }: BurgerProps): JSX.Element => {
   return (
     <div className={styles.burger} onClick={toggleBurger}>
-      <span className={concatClasses(styles.open, isOpen ? styles['burger-inner'] : '')}></span>
+      <span className={concatClasses(styles['burger-inner'], isOpen ? styles.open : '')}></span>
     </div>
   );
 };
