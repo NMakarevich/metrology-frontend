@@ -1,4 +1,6 @@
-import type { BurgerProps } from '@shared/ui/Burger';
-import type { RefObject } from 'react';
+import type { ReactNode, RefObject } from 'react';
 
-export type HeaderProps = BurgerProps & { ref?: RefObject<HTMLElement | null> };
+export type HeaderProps = {
+  children: ReactNode;
+  ref?: RefObject<HTMLElement | null>;
+};
