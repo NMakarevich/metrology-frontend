@@ -1,0 +1,22 @@
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &_item {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
