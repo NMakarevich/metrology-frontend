@@ -1,6 +1,5 @@
 import { Burger, useBurger } from '@shared/ui/Burger';
 import { Header } from '@shared/ui/Header';
-import styles from '@shared/ui/Header/Header.module.scss';
 import { NavList } from '@shared/ui/NavList';
 import { Sidebar, useSidebar } from '@shared/ui/Sidebar';
 import { useRef } from 'react';
@@ -14,17 +13,18 @@ export const Layout = () => {
   const headerRef = useRef<HTMLElement>(null);
 
   const { stylesForSidebar, stylesForMain, mode } = useSidebar({
-    mode: 'static',
+    mode: 'side',
     isOpen,
     headerRef,
   });
 
   return (
     <>
-      <Header ref={headerRef}>
-        {mode !== 'static' && <Burger isOpen={isOpen} toggleBurger={toggleBurger} />}
-        <h1 className={styles.title}>Метрология</h1>
-      </Header>
+      <Header
+        title={'Метрология'}
+        ref={headerRef}
+        control={<Burger isOpen={isOpen} toggleBurger={toggleBurger} />}
+      />
       <main style={stylesForMain} className={layoutStyles.container}>
         <Outlet />
       </main>
