@@ -1,10 +1,10 @@
 import type { SidebarProps } from '@shared/ui/Sidebar/types.ts';
 import { concatClasses } from '@shared/utils';
-import { type JSX } from 'react';
+import { type JSX, memo } from 'react';
 
 import styles from './Sidebar.module.scss';
 
-export const Sidebar = (props: SidebarProps): JSX.Element => {
+export const Sidebar = memo((props: SidebarProps): JSX.Element => {
   const { mode, isOpen, style, children } = props;
 
   return (
@@ -15,4 +15,4 @@ export const Sidebar = (props: SidebarProps): JSX.Element => {
       {children}
     </aside>
   );
-};
+});
