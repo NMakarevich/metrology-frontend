@@ -135,7 +135,7 @@ export const routes: RoutesType = {
     title: 'Авторизация',
   },
   notFound: {
-    path: '**',
+    path: '/404',
     getLink: () => {
       return '/404';
     },
