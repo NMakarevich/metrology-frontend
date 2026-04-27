@@ -4,10 +4,30 @@ export type RouteType = {
   title: string;
 };
 
-export type QueryType = {
-  [name: string]: string;
+export type RoutesType = {
+  [name in RoutesNames]: RouteType;
 };
 
-export type RoutesType = {
-  [name: string]: RouteType;
-};
+type RoutesNames =
+  | 'main'
+  | 'addresses'
+  | 'address'
+  | 'clinics'
+  | 'clinic'
+  | 'categories'
+  | 'category'
+  | 'vendors'
+  | 'vendor'
+  | 'models'
+  | 'model'
+  | 'instruments'
+  | 'instrument'
+  | 'verifications'
+  | 'verification'
+  | 'plannings'
+  | 'planning'
+  | 'registry'
+  | 'login'
+  | 'notes'
+  | 'note'
+  | 'notFound';
