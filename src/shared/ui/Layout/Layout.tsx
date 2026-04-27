@@ -1,3 +1,4 @@
+import { navList } from '@shared/constants/navList.ts';
 import { Burger, useBurger } from '@shared/ui/Burger';
 import { Header } from '@shared/ui/Header';
 import { NavList } from '@shared/ui/NavList';
@@ -32,11 +33,7 @@ export const Layout = () => {
         </Suspense>
       </main>
       <Sidebar mode={mode} isOpen={isOpen} style={stylesForSidebar}>
-        <NavList
-          links={[{ title: 'Клиники' }, { title: 'Категории' }, { title: 'Приборы' }]}
-          isIconMode={mode === 'icons'}
-          isOpen={isOpen}
-        />
+        <NavList links={navList} isIconMode={mode === 'icons'} isOpen={isOpen} />
       </Sidebar>
     </>
   );
