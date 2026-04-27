@@ -8,6 +8,6 @@ export type NavListProps = {
 
 export type NavLink = {
   title: string;
+  href: string;
   icon?: ReactNode;
-  href?: string;
 };
