@@ -9,11 +9,11 @@ export const router = createBrowserRouter([
     children: [{ index: true }],
   },
   {
-    path: routes['notFound'].path,
+    path: routes.notFound.path,
     Component: NotFound,
   },
   {
     path: '*',
-    element: <Navigate to={routes['notFound'].path} />,
+    element: <Navigate to={routes.notFound.path} />,
   },
 ]);
