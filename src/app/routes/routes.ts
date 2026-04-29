@@ -139,14 +139,14 @@ export const routes: RoutesType = {
     getLink: () => {
       return '/notes';
     },
-    title: '',
+    title: 'Заметки',
   },
   note: {
     path: '/notes/:id',
     getLink: (id: string) => {
       return `/notes/${id}`;
     },
-    title: '',
+    title: 'Заметка',
   },
   notFound: {
     path: '/404',
