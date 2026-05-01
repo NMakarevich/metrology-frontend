@@ -22,11 +22,7 @@ export const Layout = () => {
 
   return (
     <>
-      <Header
-        title={'Метрология'}
-        ref={headerRef}
-        control={<Burger isOpen={isOpen} toggleBurger={toggleBurger} />}
-      />
+      <Header ref={headerRef} control={<Burger isOpen={isOpen} toggleBurger={toggleBurger} />} />
       <main style={stylesForMain} className={layoutStyles.container}>
         <Suspense fallback={<Spinner />}>
           <Outlet />
