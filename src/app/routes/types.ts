@@ -26,6 +26,7 @@ type RoutesNames =
   | 'verification'
   | 'plannings'
   | 'planning'
+  | 'auth'
   | 'registry'
   | 'login'
   | 'notes'

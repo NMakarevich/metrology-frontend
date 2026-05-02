@@ -120,6 +120,13 @@ export const routes: RoutesType = {
     },
     title: 'Планирование',
   },
+  auth: {
+    path: '/auth',
+    getLink: () => {
+      return '/auth';
+    },
+    title: 'Авторизация',
+  },
   registry: {
     path: '/auth/registry',
     getLink: () => {
