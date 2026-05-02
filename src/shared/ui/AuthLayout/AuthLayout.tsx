@@ -11,7 +11,7 @@ const AuthLayout = (): JSX.Element => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.pathname === '/auth') {
+    if (location.pathname === routes.auth.path) {
       navigate(routes.login.path);
     }
   }, [location, navigate]);
