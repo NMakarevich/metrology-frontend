@@ -1,0 +1,40 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #004a99;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition:
+    background-color 0.4s,
+    box-shadow 0.4s;
+
+  &:hover:not(:disabled) {
+    background-color: #006cfc;
+  }
+
+  &:active:not(:disabled) {
+    box-shadow: 0 0 2px 1px #006cfc;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.icon {
+    background-color: transparent;
+    transition: scale 0.4s;
+
+    &:hover {
+      background-color: transparent;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
