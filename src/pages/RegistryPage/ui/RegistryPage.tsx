@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { schema } from '@pages/RegistryPage/ui/schema.ts';
+import { schema } from '@pages/RegistryPage/model/schema.ts';
 import type { RegistryForm } from '@pages/RegistryPage/ui/types.ts';
 import { Button } from '@shared/ui/Button';
 import { Input, type InputProps } from '@shared/ui/Input';
