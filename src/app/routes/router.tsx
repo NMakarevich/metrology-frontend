@@ -6,6 +6,7 @@ import { createBrowserRouter, Navigate } from 'react-router';
 
 const AuthLayout = lazy(() => import('@shared/ui/AuthLayout/AuthLayout.tsx'));
 const RegistryPage = lazy(() => import('@pages/RegistryPage/ui/RegistryPage.tsx'));
+const LoginPage = lazy(() => import('@pages/LoginPage/ui/LoginPage.tsx'));
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: routes.login.path,
+            Component: LoginPage,
           },
           {
             path: routes.registry.path,

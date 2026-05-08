@@ -1,43 +1,28 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { schema } from '@pages/RegistryPage/model/schema.ts';
-import type { RegistryForm } from '@pages/RegistryPage/ui/types.ts';
+import { schema } from '@pages/LoginPage/model/schema.ts';
+import type { LoginForm } from '@pages/LoginPage/ui/types.ts';
 import { Button } from '@shared/ui/Button';
 import { Input, type InputProps } from '@shared/ui/Input';
 import { type JSX, memo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import styles from './RegistryPage.module.scss';
+import styles from './LoginPage.module.scss';
 
-const RegistryPage = (): JSX.Element => {
+const LoginPage = (): JSX.Element => {
   const {
     control,
     handleSubmit,
     formState: { isValid },
-  } = useForm<RegistryForm>({
+  } = useForm<LoginForm>({
     resolver: zodResolver(schema),
     mode: 'onChange',
     defaultValues: {
-      firstName: '',
-      lastName: '',
       login: '',
       password: '',
-      confirmPassword: '',
     },
   });
 
   const formFields: InputProps[] = [
-    {
-      type: 'text',
-      label: 'Имя',
-      name: 'firstName',
-      id: 'firstName',
-    },
-    {
-      type: 'text',
-      label: 'Фамилия',
-      name: 'lastName',
-      id: 'lastName',
-    },
     {
       type: 'text',
       label: 'Логин',
@@ -52,16 +37,9 @@ const RegistryPage = (): JSX.Element => {
       id: 'password',
       autoComplete: 'password',
     },
-    {
-      type: 'password',
-      label: 'Подтвердить пароль',
-      name: 'confirmPassword',
-      id: 'confirmPassword',
-      autoComplete: 'password',
-    },
   ];
 
-  const onSubmit = (data: RegistryForm) => {
+  const onSubmit = (data: LoginForm) => {
     console.log(data);
   };
 
@@ -70,20 +48,20 @@ const RegistryPage = (): JSX.Element => {
       {formFields.map((formField) => {
         return (
           <Controller
-            name={formField.name as keyof RegistryForm}
             control={control}
-            key={formField.id}
+            name={formField.name as keyof LoginForm}
             render={({ field, fieldState: { error } }) => {
-              return <Input errorMessage={error?.message} {...field} {...formField} />;
+              return <Input {...formField} {...field} errorMessage={error?.message} />;
             }}
+            key={formField.id}
           />
         );
       })}
       <Button className={styles['form-submit']} type={'submit'} disabled={!isValid}>
-        Зарегистрироваться
+        Войти
       </Button>
     </form>
   );
 };
 
-export default memo(RegistryPage);
+export default memo(LoginPage);
