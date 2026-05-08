@@ -5,6 +5,7 @@ import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router';
 
 const AuthLayout = lazy(() => import('@shared/ui/AuthLayout/AuthLayout.tsx'));
+const RegistryPage = lazy(() => import('@pages/RegistryPage/ui/RegistryPage.tsx'));
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
           },
           {
             path: routes.registry.path,
+            Component: RegistryPage,
           },
         ],
       },
