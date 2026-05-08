@@ -1,0 +1,51 @@
+@use '../../styles/mixins';
+
+.input-container {
+  @include mixins.flex($align: flex-start, $gap: 5px);
+
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+
+  @include mixins.flex($direction: row, $gap: 0, $justify: flex-end);
+
+  .password-toggle {
+    padding: 5px;
+    position: absolute;
+    right: 5px;
+    color: #000;
+  }
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid rgb(0 0 0 / 50%);
+  transition: border-color 0.4s;
+
+  &.error,
+  &.error:focus,
+  &.error:hover {
+    border-color: #d32f2f;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 50%);
+  }
+
+  &:hover {
+    border-color: rgb(0 0 0 / 100%);
+  }
+}
+
+.error-message {
+  display: block;
+  min-height: 12px;
+  font-size: 12px;
+  line-height: 12px;
+  color: #d32f2f;
+}

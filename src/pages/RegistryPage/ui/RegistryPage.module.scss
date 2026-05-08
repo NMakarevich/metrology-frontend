@@ -1,0 +1,11 @@
+@use '../../../shared/styles/mixins';
+
+.form {
+  width: 100%;
+
+  @include mixins.flex($gap: 10px);
+
+  &-submit {
+    width: 100%;
+  }
+}
