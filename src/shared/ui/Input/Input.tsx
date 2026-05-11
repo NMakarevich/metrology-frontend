@@ -1,6 +1,7 @@
 import { Button } from '@shared/ui/Button';
 import { Visibility, VisibilityOff } from '@shared/ui/Icons';
 import type { InputProps } from '@shared/ui/Input/types.ts';
+import { ValidationError } from '@shared/ui/ValidationError';
 import { concatClasses } from '@shared/utils';
 import { memo, useCallback, useState } from 'react';
 
@@ -43,7 +44,7 @@ export const Input = memo((inputProps: InputProps) => {
           {...props}
         />
       )}
-      {errorMessage !== null && <p className={styles['error-message']}>{errorMessage}</p>}
+      <ValidationError>{errorMessage}</ValidationError>
     </div>
   );
 });
