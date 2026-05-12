@@ -1,18 +1,22 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRegistry } from '@pages/RegistryPage/api/useRegistry.tsx';
 import { schema } from '@pages/RegistryPage/model/schema.ts';
 import type { RegistryForm } from '@pages/RegistryPage/ui/types.ts';
 import { Button } from '@shared/ui/Button';
 import { Input, type InputProps } from '@shared/ui/Input';
-import { type JSX, memo } from 'react';
+import { ValidationError } from '@shared/ui/ValidationError';
+import { type JSX, memo, useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 import styles from './RegistryPage.module.scss';
 
 const RegistryPage = (): JSX.Element => {
+  const { isPending, error, setData } = useRegistry();
   const {
     control,
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, errors },
+    setError,
   } = useForm<RegistryForm>({
     resolver: zodResolver(schema),
     mode: 'onChange',
@@ -62,8 +66,14 @@ const RegistryPage = (): JSX.Element => {
   ];
 
   const onSubmit = (data: RegistryForm) => {
-    console.log(data);
+    setData(data);
   };
+
+  useEffect(() => {
+    if (error) {
+      setError('form', { message: error });
+    }
+  }, [error, setError]);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -79,9 +89,10 @@ const RegistryPage = (): JSX.Element => {
           />
         );
       })}
-      <Button className={styles['form-submit']} type={'submit'} disabled={!isValid}>
+      <Button className={styles['form-submit']} type={'submit'} disabled={!isValid || isPending}>
         Зарегистрироваться
       </Button>
+      <ValidationError>{errors.form?.message}</ValidationError>
     </form>
   );
 };
