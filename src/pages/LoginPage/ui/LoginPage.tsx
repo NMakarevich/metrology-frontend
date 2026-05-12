@@ -1,18 +1,23 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useLogin } from '@pages/LoginPage/api/useLogin.tsx';
 import { schema } from '@pages/LoginPage/model/schema.ts';
 import type { LoginForm } from '@pages/LoginPage/ui/types.ts';
 import { Button } from '@shared/ui/Button';
 import { Input, type InputProps } from '@shared/ui/Input';
-import { type JSX, memo } from 'react';
+import { ValidationError } from '@shared/ui/ValidationError';
+import { type JSX, memo, useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 import styles from './LoginPage.module.scss';
 
 const LoginPage = (): JSX.Element => {
+  const { isPending, error, setData } = useLogin();
+
   const {
     control,
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, errors },
+    setError,
   } = useForm<LoginForm>({
     resolver: zodResolver(schema),
     mode: 'onChange',
@@ -39,8 +44,14 @@ const LoginPage = (): JSX.Element => {
     },
   ];
 
-  const onSubmit = (data: LoginForm) => {
-    console.log(data);
+  useEffect(() => {
+    if (error) {
+      setError('form', { message: error });
+    }
+  }, [error, setError]);
+
+  const onSubmit = async (data: LoginForm) => {
+    setData(data);
   };
 
   return (
@@ -57,9 +68,10 @@ const LoginPage = (): JSX.Element => {
           />
         );
       })}
-      <Button className={styles['form-submit']} type={'submit'} disabled={!isValid}>
+      <Button className={styles['form-submit']} type={'submit'} disabled={!isValid || isPending}>
         Войти
       </Button>
+      <ValidationError>{errors.form?.message}</ValidationError>
     </form>
   );
 };
