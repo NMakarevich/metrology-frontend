@@ -1,4 +1,5 @@
 import { routes } from '@app/routes';
+import { ErrorBoundary } from '@shared/ui/ErrorBoundary';
 import { Header } from '@shared/ui/Header';
 import { Spinner } from '@shared/ui/Spinner';
 import { type JSX, memo, Suspense, useEffect, useMemo } from 'react';
@@ -41,7 +42,7 @@ const AuthLayout = (): JSX.Element => {
   }, [location, navigate]);
 
   return (
-    <>
+    <ErrorBoundary>
       <Header />
       <main className={styles.main}>
         <div className={styles.container}>
@@ -54,7 +55,7 @@ const AuthLayout = (): JSX.Element => {
           </div>
         </div>
       </main>
-    </>
+    </ErrorBoundary>
   );
 };
 
