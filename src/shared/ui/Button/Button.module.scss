@@ -1,12 +1,17 @@
+@use '../../styles/mixins';
+
+.button,
+.icon {
+  @include mixins.flex;
+
+  border: none;
+  cursor: pointer;
+}
+
 .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 15px;
   background-color: #004a99;
-  border: none;
   border-radius: 4px;
-  cursor: pointer;
   color: #fff;
   font-size: 16px;
   transition:
@@ -25,18 +30,20 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+}
 
-  &.icon {
-    background-color: transparent;
-    transition: scale 0.4s;
+.icon {
+  background-color: transparent;
+  opacity: 0.8;
+  transition:
+    transform 0.4s,
+    opacity 0.4s;
 
-    &:hover {
-      background-color: transparent;
-      transform: scale(1.05);
-    }
+  &:hover {
+    transform: scale(1.05);
+  }
 
-    &:active {
-      box-shadow: none;
-    }
+  &:active {
+    opacity: 1;
   }
 }
