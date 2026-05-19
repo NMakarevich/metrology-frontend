@@ -1,5 +1,6 @@
 import { routes } from '@app/routes';
 import { NotFound } from '@pages/NotFound/NotFound.tsx';
+import { navigationMiddleware } from '@shared/services';
 import { Layout } from '@shared/ui/Layout';
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router';
@@ -12,10 +13,12 @@ export const router = createBrowserRouter([
   {
     Component: Layout,
     children: [{ index: true }],
+    middleware: [navigationMiddleware],
   },
   {
     path: routes.auth.path,
     Component: AuthLayout,
+    middleware: [navigationMiddleware],
     children: [
       {
         children: [
