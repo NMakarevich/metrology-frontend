@@ -10,7 +10,10 @@ export const Button = memo((buttonProps: ButtonProps) => {
   return (
     <>
       <button
-        className={concatClasses(className ?? '', isIconButton ? styles.icon : styles.button)}
+        className={concatClasses(
+          className ?? '',
+          isIconButton ? styles['icon-button'] : styles.button,
+        )}
         {...props}
       >
         {children}
