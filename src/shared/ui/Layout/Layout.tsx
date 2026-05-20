@@ -2,6 +2,7 @@ import { navList } from '@shared/constants/navList.ts';
 import { Burger, useBurger } from '@shared/ui/Burger';
 import { ErrorBoundary } from '@shared/ui/ErrorBoundary';
 import { Header } from '@shared/ui/Header';
+import { ModalProvider } from '@shared/ui/Modal';
 import { NavList } from '@shared/ui/NavList';
 import { Sidebar, useSidebar } from '@shared/ui/Sidebar';
 import { Spinner } from '@shared/ui/Spinner/Spinner.tsx';
@@ -24,11 +25,13 @@ export const Layout = () => {
   return (
     <ErrorBoundary>
       <Header ref={headerRef} control={<Burger isOpen={isOpen} toggleBurger={toggleBurger} />} />
-      <main style={stylesForMain} className={layoutStyles.container}>
-        <Suspense fallback={<Spinner />}>
-          <Outlet />
-        </Suspense>
-      </main>
+      <ModalProvider>
+        <main style={stylesForMain} className={layoutStyles.container}>
+          <Suspense fallback={<Spinner />}>
+            <Outlet />
+          </Suspense>
+        </main>
+      </ModalProvider>
       <Sidebar mode={mode} isOpen={isOpen} style={stylesForSidebar}>
         <NavList links={navList} isIconMode={mode === 'icons'} isOpen={isOpen} />
       </Sidebar>
