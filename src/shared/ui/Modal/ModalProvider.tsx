@@ -4,7 +4,7 @@ import { type JSX, type ReactNode, useCallback, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export const ModalProvider = ({ children }: { children: ReactNode }): JSX.Element => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [component, setComponent] = useState<ReactNode | null>(null);
 
   const openModal = useCallback((content: ReactNode) => {
