@@ -141,6 +141,13 @@ export const routes: RoutesType = {
     },
     title: 'Авторизация',
   },
+  profile: {
+    path: '/profile',
+    getLink: () => {
+      return '/profile';
+    },
+    title: 'Профиль',
+  },
   notes: {
     path: '/notes',
     getLink: () => {
