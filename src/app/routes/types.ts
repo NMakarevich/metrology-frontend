@@ -29,6 +29,7 @@ type RoutesNames =
   | 'auth'
   | 'registry'
   | 'login'
+  | 'profile'
   | 'notes'
   | 'note'
   | 'notFound';

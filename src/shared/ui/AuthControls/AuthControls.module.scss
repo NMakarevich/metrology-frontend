@@ -1,0 +1,13 @@
+@use '../../styles/mixins';
+
+.auth {
+  @include mixins.flex($direction: row, $gap: 10px);
+
+  & button {
+    color: #fff;
+
+    &:hover {
+      background-color: rgb(255 255 255 / 10%);
+    }
+  }
+}
