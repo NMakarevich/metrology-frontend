@@ -1,18 +1,24 @@
+import { AuthContext } from '@shared/ui/AuthControls';
 import type { SidebarProps } from '@shared/ui/Sidebar/types.ts';
 import { concatClasses } from '@shared/utils';
-import { type JSX, memo } from 'react';
+import { type JSX, memo, useContext } from 'react';
 
 import styles from './Sidebar.module.scss';
 
 export const Sidebar = memo((props: SidebarProps): JSX.Element => {
   const { mode, isOpen, style, children } = props;
+  const { isAuth } = useContext(AuthContext);
 
   return (
-    <aside
-      style={style}
-      className={concatClasses(styles.sidebar, styles[mode], isOpen ? styles.open : '')}
-    >
-      {children}
-    </aside>
+    <>
+      {isAuth && (
+        <aside
+          style={style}
+          className={concatClasses(styles.sidebar, styles[mode], isOpen ? styles.open : '')}
+        >
+          {children}
+        </aside>
+      )}
+    </>
   );
 });

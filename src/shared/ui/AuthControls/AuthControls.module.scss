@@ -4,7 +4,9 @@
   @include mixins.flex($direction: row, $gap: 10px);
 
   & button {
-    color: #fff;
+    & * {
+      color: #fff;
+    }
 
     &:hover {
       background-color: rgb(255 255 255 / 10%);

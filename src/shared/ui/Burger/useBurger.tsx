@@ -11,7 +11,7 @@ export const useBurger = () => {
     (event: KeyboardEvent) => {
       const { key } = event;
 
-      if (key === 'ESC' && isOpen) {
+      if (key === 'Escape' && isOpen) {
         toggleBurger();
       }
     },

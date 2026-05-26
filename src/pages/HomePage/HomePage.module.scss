@@ -1,0 +1,45 @@
+@use '../../shared/styles/mixins';
+
+.page-content {
+  @include mixins.flex($justify: flex-start);
+
+  width: 100%;
+  height: 100%;
+}
+
+.page-title {
+  @include mixins.flex;
+
+  width: 100%;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #eee;
+}
+
+.section {
+  @include mixins.flex($justify: flex-start);
+
+  width: 100%;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #eee;
+}
+
+.features {
+  flex: 1;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #eee;
+
+  &-list {
+    @include mixins.flex($gap: 12px, $align: flex-start);
+
+    align-self: flex-start;
+    font-size: 20px;
+    list-style: none;
+  }
+}
+
+.link {
+  color: #004a99;
+}
