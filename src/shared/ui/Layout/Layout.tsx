@@ -32,10 +32,12 @@ export const Layout = () => {
           auth={<AuthControls />}
         />
         <ModalProvider>
-          <main style={stylesForMain} className={layoutStyles.container}>
-            <Suspense fallback={<Spinner />}>
-              <Outlet />
-            </Suspense>
+          <main style={stylesForMain} className={layoutStyles.main}>
+            <div className={layoutStyles.container}>
+              <Suspense fallback={<Spinner />}>
+                <Outlet />
+              </Suspense>
+            </div>
           </main>
         </ModalProvider>
         <Sidebar mode={mode} isOpen={isOpen} style={stylesForSidebar}>
