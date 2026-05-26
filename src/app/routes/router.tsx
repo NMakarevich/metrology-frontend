@@ -8,12 +8,13 @@ import { createBrowserRouter, Navigate } from 'react-router';
 const AuthLayout = lazy(() => import('@shared/ui/AuthLayout/AuthLayout.tsx'));
 const RegistryPage = lazy(() => import('@pages/RegistryPage/ui/RegistryPage.tsx'));
 const LoginPage = lazy(() => import('@pages/LoginPage/ui/LoginPage.tsx'));
+const HomePage = lazy(() => import('@pages/HomePage/HomePage.tsx'));
 
 export const router = createBrowserRouter([
   {
     Component: Layout,
-    children: [{ index: true }],
     middleware: [navigationMiddleware],
+    children: [{ index: true, Component: HomePage }],
   },
   {
     path: routes.auth.path,
