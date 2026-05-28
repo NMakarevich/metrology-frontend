@@ -1,9 +1,9 @@
+import { ModalProvider } from '@app/contextAPI/Modal';
 import { navList } from '@shared/constants/navList.ts';
 import { AuthControls } from '@shared/ui/AuthControls';
 import { Burger, useBurger } from '@shared/ui/Burger';
 import { ErrorBoundary } from '@shared/ui/ErrorBoundary';
 import { Header } from '@shared/ui/Header';
-import { ModalProvider } from '@shared/ui/Modal';
 import { NavList } from '@shared/ui/NavList';
 import { Sidebar, useSidebar } from '@shared/ui/Sidebar';
 import { Spinner } from '@shared/ui/Spinner/Spinner.tsx';
