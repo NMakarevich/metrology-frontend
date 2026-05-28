@@ -13,7 +13,7 @@ const loggedInDeniedRoutes = [routes.login.path, routes.registry.path, routes.au
 
 export async function navigationMiddleware({ request }: { request: Request }) {
   const isAuth = !!localStorage.getItem(TOKEN);
-  const requestUrl = request.url.replace('http://localhost:5173', '');
+  const requestUrl = new URL(request.url).pathname;
 
   if (isAuth && loggedInDeniedRoutes.includes(requestUrl)) {
     throw redirect(routes.main.path);
