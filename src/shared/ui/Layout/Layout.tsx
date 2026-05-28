@@ -1,5 +1,5 @@
 import { navList } from '@shared/constants/navList.ts';
-import { AuthControls, AuthProvider } from '@shared/ui/AuthControls';
+import { AuthControls } from '@shared/ui/AuthControls';
 import { Burger, useBurger } from '@shared/ui/Burger';
 import { ErrorBoundary } from '@shared/ui/ErrorBoundary';
 import { Header } from '@shared/ui/Header';
@@ -25,25 +25,23 @@ export const Layout = () => {
 
   return (
     <ErrorBoundary>
-      <AuthProvider>
-        <Header
-          ref={headerRef}
-          control={<Burger isOpen={isOpen} toggleBurger={toggleBurger} />}
-          auth={<AuthControls />}
-        />
-        <ModalProvider>
-          <main style={stylesForMain} className={layoutStyles.main}>
-            <div className={layoutStyles.container}>
-              <Suspense fallback={<Spinner />}>
-                <Outlet />
-              </Suspense>
-            </div>
-          </main>
-        </ModalProvider>
-        <Sidebar mode={mode} isOpen={isOpen} style={stylesForSidebar}>
-          <NavList links={navList} isIconMode={mode === 'icons'} isOpen={isOpen} />
-        </Sidebar>
-      </AuthProvider>
+      <Header
+        ref={headerRef}
+        control={<Burger isOpen={isOpen} toggleBurger={toggleBurger} />}
+        auth={<AuthControls />}
+      />
+      <ModalProvider>
+        <main style={stylesForMain} className={layoutStyles.main}>
+          <div className={layoutStyles.container}>
+            <Suspense fallback={<Spinner />}>
+              <Outlet />
+            </Suspense>
+          </div>
+        </main>
+      </ModalProvider>
+      <Sidebar mode={mode} isOpen={isOpen} style={stylesForSidebar}>
+        <NavList links={navList} isIconMode={mode === 'icons'} isOpen={isOpen} />
+      </Sidebar>
     </ErrorBoundary>
   );
 };

@@ -30,7 +30,8 @@
       "@/*": ["./*"],
       "@app/*": ["./app/*"],
       "@shared/*": ["./shared/*"],
-      "@pages/*": ["./pages/*"]
+      "@pages/*": ["./pages/*"],
+      "@entities/*": ["./entities/*"]
     }
   },
   "include": ["src"]

@@ -1,5 +1,5 @@
+import { AuthContext } from '@app/contextAPI/Auth';
 import { routes } from '@app/routes';
-import { AuthContext } from '@shared/ui/AuthControls';
 import { Button } from '@shared/ui/Button';
 import { Login, Logout, Profile } from '@shared/ui/Icons';
 import { type JSX, useCallback, useContext } from 'react';
