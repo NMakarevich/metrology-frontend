@@ -1,4 +1,5 @@
-import type { ModalContextType } from '@shared/ui/Modal/types.ts';
 import { createContext } from 'react';
+
+import type { ModalContextType } from './types.ts';
 
 export const ModalContext = createContext<ModalContextType | null>(null);

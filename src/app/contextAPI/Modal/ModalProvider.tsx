@@ -1,7 +1,8 @@
 import { Modal } from '@shared/ui/Modal/Modal.tsx';
-import { ModalContext } from '@shared/ui/Modal/ModalContext.ts';
 import { type JSX, type ReactNode, useCallback, useState } from 'react';
 import { createPortal } from 'react-dom';
+
+import { ModalContext } from './ModalContext.ts';
 
 export const ModalProvider = ({ children }: { children: ReactNode }): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,8 @@
+import type { ModalContextType } from '@app/contextAPI/Modal';
+import { ModalContext } from '@app/contextAPI/Modal/ModalContext.ts';
 import { Button } from '@shared/ui/Button';
 import { Close } from '@shared/ui/Icons';
-import { ModalContext } from '@shared/ui/Modal/ModalContext.ts';
-import type { ModalContextType, ModalProps } from '@shared/ui/Modal/types.ts';
+import type { ModalProps } from '@shared/ui/Modal/types.ts';
 import { type JSX, useContext } from 'react';
 
 import styles from './Modal.module.scss';
