@@ -1,6 +1,6 @@
 import { routes } from '@app/routes';
 import { NotFound } from '@pages/NotFound/NotFound.tsx';
-import { navigationMiddleware } from '@shared/services';
+import { navigationMiddleware, titleMiddleware } from '@shared/services';
 import { Layout } from '@shared/ui/Layout';
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router';
@@ -13,13 +13,13 @@ const HomePage = lazy(() => import('@pages/HomePage/HomePage.tsx'));
 export const router = createBrowserRouter([
   {
     Component: Layout,
-    middleware: [navigationMiddleware],
-    children: [{ index: true, Component: HomePage }],
+    middleware: [navigationMiddleware, titleMiddleware],
+    children: [{ index: true, Component: HomePage }, { path: routes.clinics.path }],
   },
   {
     path: routes.auth.path,
     Component: AuthLayout,
-    middleware: [navigationMiddleware],
+    middleware: [navigationMiddleware, titleMiddleware],
     children: [
       {
         children: [
