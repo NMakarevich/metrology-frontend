@@ -1,8 +1,9 @@
+import { AuthContext } from '@app/contextAPI/Auth';
 import { routes } from '@app/routes';
 import { responseSchema } from '@pages/LoginPage/model/schema.ts';
 import type { LoginForm } from '@pages/LoginPage/ui/types.ts';
 import { type ErrorType, fetcher } from '@shared/services';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export const useLogin = () => {
@@ -11,6 +12,7 @@ export const useLogin = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const abortControllerRef = useRef<AbortController | null>(null);
+  const { loginUser } = useContext(AuthContext);
 
   const login = useCallback(async () => {
     abortControllerRef.current = new AbortController();
@@ -25,8 +27,8 @@ export const useLogin = () => {
       });
       if (response.ok) {
         const json = await response.json();
-        const { access_token } = responseSchema.parse(json);
-        localStorage.setItem('access_token', access_token);
+        const dataResponse = responseSchema.parse(json);
+        loginUser(dataResponse);
         navigate(routes.main.path);
       } else {
         const json: ErrorType = await response.json();
@@ -43,7 +45,7 @@ export const useLogin = () => {
       }
       setIsPending(false);
     }
-  }, [data, navigate]);
+  }, [data, loginUser, navigate]);
 
   useEffect(() => {
     if (abortControllerRef.current) {

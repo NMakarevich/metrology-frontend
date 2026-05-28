@@ -1,5 +1,5 @@
+import { AuthContext } from '@app/contextAPI/Auth';
 import { routes } from '@app/routes';
-import { AuthContext } from '@shared/ui/AuthControls';
 import { concatClasses } from '@shared/utils';
 import { type JSX, memo, useContext } from 'react';
 import { NavLink } from 'react-router';

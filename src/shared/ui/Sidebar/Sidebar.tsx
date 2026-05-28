@@ -1,4 +1,4 @@
-import { AuthContext } from '@shared/ui/AuthControls';
+import { AuthContext } from '@app/contextAPI/Auth';
 import type { SidebarProps } from '@shared/ui/Sidebar/types.ts';
 import { concatClasses } from '@shared/utils';
 import { type JSX, memo, useContext } from 'react';

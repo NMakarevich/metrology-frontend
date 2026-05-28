@@ -1,5 +1,5 @@
+import { AuthContext } from '@app/contextAPI/Auth';
 import { routes } from '@app/routes';
-import { AuthContext } from '@shared/ui/AuthControls';
 import type { HeaderProps } from '@shared/ui/Header/types.ts';
 import { type JSX, memo, useContext } from 'react';
 import { Link } from 'react-router';
