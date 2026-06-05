@@ -1,4 +1,6 @@
-import type { schema } from '@pages/LoginPage/model/schema.ts';
-import { z } from 'zod';
+import type { ZodString } from 'zod';
 
-export type LoginForm = z.infer<typeof schema>;
+export type LoginForm = {
+  login: ZodString;
+  password: ZodString;
+};

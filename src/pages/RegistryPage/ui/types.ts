@@ -1,4 +1,9 @@
-import type { schema } from '@pages/RegistryPage/model/schema.ts';
-import { z } from 'zod';
+import { type ZodString } from 'zod';
 
-export type RegistryForm = z.infer<typeof schema>;
+export type RegistryForm = {
+  login: ZodString;
+  firstName: ZodString;
+  lastName: ZodString;
+  password: ZodString;
+  confirmPassword: ZodString;
+};
