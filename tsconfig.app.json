@@ -31,7 +31,8 @@
       "@app/*": ["./app/*"],
       "@shared/*": ["./shared/*"],
       "@pages/*": ["./pages/*"],
-      "@entities/*": ["./entities/*"]
+      "@entities/*": ["./entities/*"],
+      "@features/*": ["./features/*"]
     }
   },
   "include": ["src"]
