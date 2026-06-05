@@ -1,6 +1,7 @@
+import type { RegistryForm } from '@pages/RegistryPage/ui/types.ts';
 import { z } from 'zod';
 
-const baseSchema = z.object({
+const baseSchema = z.object<RegistryForm>({
   firstName: z
     .string()
     .min(2, { error: 'Минимальная длина: 2 буквы' })
