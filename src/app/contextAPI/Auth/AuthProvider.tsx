@@ -1,5 +1,5 @@
 import { routes } from '@app/routes';
-import type { User } from '@entities/user';
+import type { User } from '@entities/User';
 import type { LoginResponseSchema } from '@pages/LoginPage';
 import { TOKEN, USER } from '@shared/constants/localStorageKeys.ts';
 import { type JSX, type ReactNode, useCallback, useState } from 'react';

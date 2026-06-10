@@ -1,4 +1,4 @@
-import type { User } from '@entities/user';
+import type { User } from '@entities/User';
 import type { LoginResponseSchema } from '@pages/LoginPage';
 
 export type AuthContextType = {

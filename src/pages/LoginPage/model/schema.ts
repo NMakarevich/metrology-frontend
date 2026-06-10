@@ -1,7 +1,6 @@
+import { UserSchema } from '@entities/User';
 import type { LoginForm } from '@pages/LoginPage/ui/types.ts';
 import { z } from 'zod';
-
-import { UserSchema } from '@/entities/user';
 
 export const schema = z.object<LoginForm>({
   login: z.string().nonempty({ error: 'Введите логин' }),
