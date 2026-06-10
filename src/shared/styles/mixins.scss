@@ -5,3 +5,10 @@
   align-items: $align;
   gap: $gap;
 }
+
+@mixin content-wrapper() {
+  width: 100%;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #eee;
+}
