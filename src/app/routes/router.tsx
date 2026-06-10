@@ -1,5 +1,11 @@
 import { routes } from '@app/routes';
-import { AuthLayout, HomePage, LoginPage, RegistryPage } from '@app/routes/lazyComponents.ts';
+import {
+  AuthLayout,
+  HomePage,
+  LoginPage,
+  ProfilePage,
+  RegistryPage,
+} from '@app/routes/lazyComponents.ts';
 import { NotFound } from '@pages/NotFound/NotFound.tsx';
 import { navigationMiddleware, titleMiddleware } from '@shared/services';
 import { Layout } from '@shared/ui/Layout';
@@ -9,7 +15,10 @@ export const router = createBrowserRouter([
   {
     Component: Layout,
     middleware: [navigationMiddleware, titleMiddleware],
-    children: [{ index: true, Component: HomePage }, { path: routes.clinics.path }],
+    children: [
+      { index: true, Component: HomePage },
+      { path: routes.profile.path, Component: ProfilePage },
+    ],
   },
   {
     path: routes.auth.path,
