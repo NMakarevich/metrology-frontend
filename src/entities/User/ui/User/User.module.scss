@@ -1,0 +1,27 @@
+@use '../../../../shared/styles/mixins';
+
+.user {
+  padding: 24px;
+
+  @include mixins.flex;
+
+  &-data {
+    @include mixins.flex;
+    @include mixins.content-wrapper;
+
+    list-style: none;
+    font-size: 20px;
+
+    &_item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 480px;
+      width: 100%;
+    }
+  }
+
+  &-edit {
+    @include mixins.content-wrapper;
+    @include mixins.flex($direction: row);
+  }
+}
