@@ -9,7 +9,8 @@ export const UserSchema = z.object({
   createdAt: z.string(),
   updatedAt: z.string(),
   role: z.enum(['ADMIN', 'ENGINEER']),
-  updatedBy: z.union([z.string(), z.uuidv4()]),
+  updatedById: z.union([z.string(), z.null()]),
+  createdById: z.union([z.string(), z.null()]),
   version: z.number(),
 });
 
