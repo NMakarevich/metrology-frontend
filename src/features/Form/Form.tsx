@@ -15,7 +15,7 @@ import {
 import styles from './Form.module.scss';
 
 export const Form = <T extends FieldValues>(props: FormProps<T>): JSX.Element => {
-  const { inputs, schema, submitText, error, isPending, onSubmit, formValues } = props;
+  const { title, inputs, schema, submitText, error, isPending, onSubmit, formValues } = props;
 
   const defaultValues = useMemo(() => {
     if (!formValues)
@@ -47,21 +47,24 @@ export const Form = <T extends FieldValues>(props: FormProps<T>): JSX.Element =>
   }, [error, setError]);
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      {inputs.map((input) => (
-        <Controller
-          control={control}
-          render={({ field, fieldState: { error } }) => {
-            return <Input {...field} {...input} errorMessage={error?.message} />;
-          }}
-          name={input.name}
-          key={input.id}
-        />
-      ))}
-      <Button className={styles['form-submit']} type={'submit'} disabled={!isValid || isPending}>
-        {submitText}
-      </Button>
-      <ValidationError>{errors.form?.message}</ValidationError>
-    </form>
+    <>
+      {title && <h2 className={styles['form-title']}>{title}</h2>}
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        {inputs.map((input) => (
+          <Controller
+            control={control}
+            render={({ field, fieldState: { error } }) => {
+              return <Input {...field} {...input} errorMessage={error?.message} />;
+            }}
+            name={input.name}
+            key={input.id}
+          />
+        ))}
+        <Button className={styles['form-submit']} type={'submit'} disabled={!isValid || isPending}>
+          {submitText}
+        </Button>
+        <ValidationError>{errors.form?.message}</ValidationError>
+      </form>
+    </>
   );
 };
