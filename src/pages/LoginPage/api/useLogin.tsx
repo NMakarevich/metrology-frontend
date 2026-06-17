@@ -1,8 +1,8 @@
 import { AuthContext } from '@app/contextAPI/Auth';
 import { routes } from '@app/routes';
-import { responseSchema } from '@pages/LoginPage/model/schema.ts';
+import { type LoginResponseSchema } from '@pages/LoginPage/model/schema.ts';
 import type { LoginForm } from '@pages/LoginPage/ui/types.ts';
-import { type ErrorType, fetcher } from '@shared/services';
+import { fetcher } from '@shared/services';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -19,20 +19,17 @@ export const useLogin = () => {
     setIsPending(true);
     setError(null);
     try {
-      const response = await fetcher({
+      const response = await fetcher<LoginResponseSchema>({
         url: 'auth/login',
         method: 'POST',
         body: JSON.stringify(data),
         signal: abortControllerRef.current.signal,
       });
-      if (response.ok) {
-        const json = await response.json();
-        const dataResponse = responseSchema.parse(json);
-        loginUser(dataResponse);
+      if ('data' in response) {
+        loginUser(response.data);
         navigate(routes.main.path);
       } else {
-        const json: ErrorType = await response.json();
-        if (json.statusCode === 401) {
+        if (response.statusCode === 401) {
           throw new Error('Неверное имя пользователя или пароль');
         }
       }

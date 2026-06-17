@@ -1,6 +1,7 @@
 import { routes } from '@app/routes';
+import type { User } from '@entities/User';
 import type { RegistryForm } from '@pages/RegistryPage/ui/types.ts';
-import { type ErrorType, fetcher } from '@shared/services';
+import { fetcher } from '@shared/services';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -17,18 +18,17 @@ export const useRegistry = () => {
     setError(null);
 
     try {
-      const response = await fetcher({
+      const response = await fetcher<User>({
         url: 'auth/registry',
         method: 'POST',
         body: JSON.stringify(data),
         signal: abortControllerRef.current.signal,
       });
 
-      if (response.ok) {
+      if ('data' in response) {
         navigate(routes.login.path);
       } else {
-        const json: ErrorType = await response.json();
-        if (json.statusCode === 409) {
+        if (response.statusCode === 409) {
           throw new Error('Пользователь с таким логином уже существует');
         }
       }

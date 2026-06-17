@@ -3,7 +3,7 @@ import type { ModalContextType } from '@app/contextAPI/Modal';
 import { ModalContext } from '@app/contextAPI/Modal/ModalContext.ts';
 import { UserSchema } from '@entities/User';
 import type { EditPassword, EditUser } from '@entities/User/ui/User/types.ts';
-import { type ErrorType, fetcher } from '@shared/services';
+import { fetcher } from '@shared/services';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 export const useEditUser = () => {
@@ -30,13 +30,11 @@ export const useEditUser = () => {
         body: JSON.stringify(String(login) === user!.login ? { firstName, lastName } : editUser!),
         signal: controllerRef.current.signal,
       });
-      if (response.ok) {
-        const json = await response.json();
-        const editedUser = UserSchema.parse(json);
+      if ('data' in response) {
+        const editedUser = UserSchema.parse(response.data);
         loginUser({ access_token: accessToken!, user: editedUser });
       } else {
-        const json: ErrorType = await response.json();
-        throw new Error(json.message);
+        throw new Error(response.message);
       }
       setIsPending(false);
       closeModal();
@@ -64,11 +62,10 @@ export const useEditUser = () => {
         body: JSON.stringify(editPassword),
         signal: controllerRef.current.signal,
       });
-      if (response.ok) {
+      if ('data' in response) {
         closeModal();
       } else {
-        const json: ErrorType = await response.json();
-        throw new Error(json.message);
+        throw new Error(response.message);
       }
       setIsPending(false);
     } catch (error) {
