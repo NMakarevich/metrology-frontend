@@ -126,7 +126,7 @@ export const User = (): JSX.Element => {
         </li>
         {isChanged && (
           <li className={concatClasses(styles['user-data_item'], styles['user-data_changed'])}>
-            <span className={styles['item-title']}>Данные изменены:</span>
+            <span className={styles['item-title']}>Данные изменены</span>
             <span className={styles['item-value']}>
               {new Date(user.updatedAt).toLocaleDateString()}
             </span>
